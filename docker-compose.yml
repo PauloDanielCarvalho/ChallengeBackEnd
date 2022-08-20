@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: api
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    
+    command: uvicorn router.main:app --reload --host 0.0.0.0 --port 8080
+    ports:
+      - 2000:8080
+    depends_on:
+      - database
+  
+  database:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: dbFastapi
+    volumes:
+      - ./db:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - 5050:80
+    depends_on:
+      - database
+
