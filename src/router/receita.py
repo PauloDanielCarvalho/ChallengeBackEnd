@@ -13,7 +13,7 @@ async def check_date(list_receita,date,description):
     return True
 
 @receita_router.post("/cadastro",response_model=ReceitaInput)
-async def registration_receita(receita_input:ReceitaInput):
+async def create_receita(receita_input:ReceitaInput):
     list_receitas = await ReceitaRepository.get_receitas()
     if await check_date(list_receitas,receita_input.data.month,receita_input.descricao):
         receita = await ReceitaRepository.create_receita(receita_input)

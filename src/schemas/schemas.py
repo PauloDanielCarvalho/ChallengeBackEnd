@@ -8,3 +8,8 @@ class ReceitaInput(BaseModel):
     data:date
     class Config:
         orm_mode = True
+
+class DespesaInput(BaseModel):
+    descricao:str
+    valor:float
+    data:date

@@ -1,4 +1,4 @@
-from
+from router.despesa import despesa_router
 from router.receita import receita_router
 from fastapi import FastAPI
 
@@ -7,8 +7,7 @@ from fastapi import FastAPI
 app=FastAPI()
 
 app.include_router(receita_router)
-app
-@app.get('/')
-async def test():
-    return "nadas"
+app.include_router(despesa_router)
+
+
 
