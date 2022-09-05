@@ -17,3 +17,5 @@ class Despesa(Base):
     descricao=Column(String)
     valor=Column(Float)
     data=Column(Date)
+    categoria=Column(String)
+    

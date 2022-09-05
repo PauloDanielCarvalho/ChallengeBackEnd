@@ -13,3 +13,6 @@ class DespesaInput(BaseModel):
     descricao:str
     valor:float
     data:date
+    categoria:str | None
+    class Config:
+        orm_mode = True
